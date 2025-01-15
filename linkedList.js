@@ -11,36 +11,36 @@ class Node {
 class LinkedList {
   head = null;
 
-  get head(){
-    if(this.head == null){
-        return this.head;
+  get head() {
+    if (this.head == null) {
+      return this.head;
     }
     return this.head.value;
-  }   
+  }
 
-  get tail(){
-    if(this.head == null){
-        return this.head;
-    }else{
-        let temp = this.head;
-        while(temp.next != null){
-            temp = temp.next;
-        }
-        return temp.value;
+  get tail() {
+    if (this.head == null) {
+      return this.head;
+    } else {
+      let temp = this.head;
+      while (temp.next != null) {
+        temp = temp.next;
+      }
+      return temp.value;
     }
   }
 
-  get size(){
+  get size() {
     let length = 0;
-    if(this.head == null){
-        return length;
-    }else{
-        let temp = this.head;
-        while(temp.next != null){
-            length++;
-            temp = temp.next;
-        }
-        return length;
+    if (this.head == null) {
+      return length;
+    } else {
+      let temp = this.head;
+      while (temp.next != null) {
+        length++;
+        temp = temp.next;
+      }
+      return length;
     }
   }
 
@@ -63,6 +63,18 @@ class LinkedList {
     } else {
       let temp = new Node(value, this.head);
       this.head = temp;
+    }
+  }
+
+  at(index) {
+    if (this.size < index) {
+      return new Error("The Index is out of bound to the entered values");
+    } else {
+      let temp = this.head;
+      for (let i = 0; i < index; i++) {
+        temp = temp.next;
+      }
+      return temp.value;
     }
   }
 }
