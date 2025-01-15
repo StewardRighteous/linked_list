@@ -23,4 +23,13 @@ class LinkedList {
       this.head = temp;
     }
   }
+
+  prepend(value){
+    if(this.head == null){
+        this.head = new Node(value, null);
+    }else{
+        let temp = new Node(value, this.head);
+        this.head = temp;
+    }
+  }
 }
