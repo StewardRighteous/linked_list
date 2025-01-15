@@ -8,7 +8,7 @@ class Node {
   }
 }
 
-class LinkedList {
+export default class LinkedList {
   head = null;
 
   get head() {
@@ -132,10 +132,10 @@ class LinkedList {
     } else {
       let temp = this.head;
       while (temp.next != null) {
-        linkedListString = linkedListString + "(${temp.value}) ->";
+        linkedListString = linkedListString + `(${temp.value}) ->`;
         temp = temp.next;
       }
-      linkedListString = linkedListString + "(${temp.value}) -> null";
+      linkedListString = linkedListString + `(${temp.value}) -> null`;
     }
     return linkedListString;
   }
@@ -171,3 +171,4 @@ class LinkedList {
     }
   }
 }
+
