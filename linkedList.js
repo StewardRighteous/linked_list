@@ -78,16 +78,32 @@ class LinkedList {
     }
   }
 
-  pop(){
-    if(this.head == null){
-        return new Error("There exists no element to pop");
-    }else{
-        let temp = this.head;
-        while(temp.next.next != null){
-            temp = temp.next;
+  pop() {
+    if (this.head == null) {
+      return new Error("There exists no element to pop");
+    } else {
+      let temp = this.head;
+      while (temp.next.next != null) {
+        temp = temp.next;
+      }
+      temp.next = null;
+      this.head = temp;
+    }
+  }
+
+  contains(value) {
+    if (this.head == null) {
+      return false;
+    } else {
+      let contains = false;
+      let temp = this.head;
+      while (temp.next != null) {
+        if (temp.value == value) {
+          contains = true;
         }
-        temp.next = null;
-        this.head = temp; 
+        temp = temp.next;
+      }
+      return contains;
     }
   }
 }
