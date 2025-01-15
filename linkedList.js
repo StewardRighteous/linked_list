@@ -1,8 +1,26 @@
-class Node{
-    value = null;
-    next = null;
+class Node {
+  value = null;
+  next = null;
+
+  constructor(value, next) {
+    this.value = value;
+    this.next = next;
+  }
 }
 
-class LinkedList{
+class LinkedList {
+  head = null;
 
+  append(value) {
+    if (this.head == null) {
+      this.head = new Node(value, null);
+    } else {
+      let temp = this.head;
+      while (temp.next != null) {
+        temp = temp.next;
+      }
+      temp.next = new Node(value, null);
+      this.head = temp;
+    }
+  }
 }
