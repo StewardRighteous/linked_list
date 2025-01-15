@@ -106,4 +106,22 @@ class LinkedList {
       return contains;
     }
   }
+
+  find(value) {
+    if (this.head == null) {
+      return null;
+    } else {
+      let temp = this.head;
+      let index = 0;
+      while (temp.value != value && temp.next != null) {
+        index++;
+        temp = temp.next;
+      }
+      if (temp.value == value) {
+        return index;
+      } else {
+        return null;
+      }
+    }
+  }
 }
