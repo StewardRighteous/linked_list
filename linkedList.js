@@ -12,8 +12,15 @@ class LinkedList {
   head = null;
 
   get head(){
+    if(this.head == null){
+        return this.head;
+    }
     return this.head.value;
   }   
+
+  get tail(){
+    
+  }
 
   get size(){
     let length = 0;
