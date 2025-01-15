@@ -67,7 +67,7 @@ class LinkedList {
   }
 
   at(index) {
-    if (this.size < index) {
+    if (this.size < index && index >= 0) {
       return new Error("The Index is out of bound to the entered values");
     } else {
       let temp = this.head;
@@ -138,5 +138,21 @@ class LinkedList {
       linkedListString = linkedListString + "(${temp.value}) -> null";
     }
     return linkedListString;
+  }
+
+  insertAt(value, index){
+    if(this.size < index && index >= 0){
+        return new Error("The Index value is out of bound for the existing values");
+    }else{
+        let temp = this.head;
+        let previousNode;
+        for(let i=0; i< index; i++){
+            previousNode = temp;
+            temp = temp.next;
+        }
+        let newNode = new Node(value, temp);
+        previousNode.next = newNode;
+        this.head = previousNode;
+    }
   }
 }
