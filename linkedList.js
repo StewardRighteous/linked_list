@@ -124,4 +124,19 @@ class LinkedList {
       }
     }
   }
+
+  toString() {
+    let linkedListString = "";
+    if (this.head == null) {
+      linkedListString = "null";
+    } else {
+      let temp = this.head;
+      while (temp.next != null) {
+        linkedListString = linkedListString + "(${temp.value}) ->";
+        temp = temp.next;
+      }
+      linkedListString = linkedListString + "(${temp.value}) -> null";
+    }
+    return linkedListString;
+  }
 }
