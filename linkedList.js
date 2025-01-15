@@ -77,4 +77,17 @@ class LinkedList {
       return temp.value;
     }
   }
+
+  pop(){
+    if(this.head == null){
+        return new Error("There exists no element to pop");
+    }else{
+        let temp = this.head;
+        while(temp.next.next != null){
+            temp = temp.next;
+        }
+        temp.next = null;
+        this.head = temp; 
+    }
+  }
 }
