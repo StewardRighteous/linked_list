@@ -19,7 +19,15 @@ class LinkedList {
   }   
 
   get tail(){
-    
+    if(this.head == null){
+        return this.head;
+    }else{
+        let temp = this.head;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        return temp.value;
+    }
   }
 
   get size(){
