@@ -155,4 +155,19 @@ class LinkedList {
         this.head = previousNode;
     }
   }
+
+  removeAt(index){
+    if(this.size < index && index >= 0){
+        return new Error("The Index value is out of bound for the existing values");
+    }else{
+        let temp= this.head;
+        let previousNode;
+        for(let i=0; i< index; i++){
+            previousNode = temp;
+            temp = temp.next;
+        }
+        previousNode.next = temp.next;
+        this.head = previousNode;
+    }
+  }
 }
