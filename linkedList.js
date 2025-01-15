@@ -11,7 +11,11 @@ class Node {
 class LinkedList {
   head = null;
 
-  size(){
+  get head(){
+    return this.head.value;
+  }   
+
+  get size(){
     let length = 0;
     if(this.head == null){
         return length;
