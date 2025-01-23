@@ -9,20 +9,20 @@ class Node {
 }
 
 export default class LinkedList {
-  head = null;
+  _head = null;
 
   get head() {
-    if (this.head == null) {
-      return this.head;
+    if (this._head == null) {
+      return this._head;
     }
-    return this.head.value;
+    return this._head.value;
   }
 
   get tail() {
-    if (this.head == null) {
-      return this.head;
+    if (this._head == null) {
+      return this._head;
     } else {
-      let temp = this.head;
+      let temp = this._head;
       while (temp.next != null) {
         temp = temp.next;
       }
@@ -32,37 +32,36 @@ export default class LinkedList {
 
   get size() {
     let length = 0;
-    if (this.head == null) {
+    if (this._head == null) {
       return length;
     } else {
-      let temp = this.head;
+      let temp = this._head;
       while (temp.next != null) {
         length++;
         temp = temp.next;
       }
+      length++; //Last element with null
       return length;
     }
   }
 
   append(value) {
-    if (this.head == null) {
-      this.head = new Node(value, null);
+    if (this._head == null) {
+      this._head = new Node(value, null);
     } else {
-      let temp = this.head;
+      let temp = this._head;
       while (temp.next != null) {
         temp = temp.next;
       }
       temp.next = new Node(value, null);
-      this.head = temp;
     }
   }
 
   prepend(value) {
-    if (this.head == null) {
-      this.head = new Node(value, null);
+    if (this._head == null) {
+      this._head = new Node(value, null);
     } else {
-      let temp = new Node(value, this.head);
-      this.head = temp;
+      let temp = new Node(value, this._head);
     }
   }
 
@@ -70,7 +69,7 @@ export default class LinkedList {
     if (this.size < index && index >= 0) {
       return new Error("The Index is out of bound to the entered values");
     } else {
-      let temp = this.head;
+      let temp = this._head;
       for (let i = 0; i < index; i++) {
         temp = temp.next;
       }
@@ -79,24 +78,23 @@ export default class LinkedList {
   }
 
   pop() {
-    if (this.head == null) {
+    if (this._head == null) {
       return new Error("There exists no element to pop");
     } else {
-      let temp = this.head;
+      let temp = this._head;
       while (temp.next.next != null) {
         temp = temp.next;
       }
       temp.next = null;
-      this.head = temp;
     }
   }
 
   contains(value) {
-    if (this.head == null) {
+    if (this._head == null) {
       return false;
     } else {
       let contains = false;
-      let temp = this.head;
+      let temp = this._head;
       while (temp.next != null) {
         if (temp.value == value) {
           contains = true;
@@ -108,10 +106,10 @@ export default class LinkedList {
   }
 
   find(value) {
-    if (this.head == null) {
+    if (this._head == null) {
       return null;
     } else {
-      let temp = this.head;
+      let temp = this._head;
       let index = 0;
       while (temp.value != value && temp.next != null) {
         index++;
@@ -127,10 +125,10 @@ export default class LinkedList {
 
   toString() {
     let linkedListString = "";
-    if (this.head == null) {
+    if (this._head == null) {
       linkedListString = "null";
     } else {
-      let temp = this.head;
+      let temp = this._head;
       while (temp.next != null) {
         linkedListString = linkedListString + `(${temp.value}) ->`;
         temp = temp.next;
@@ -140,35 +138,36 @@ export default class LinkedList {
     return linkedListString;
   }
 
-  insertAt(value, index){
-    if(this.size < index && index >= 0){
-        return new Error("The Index value is out of bound for the existing values");
-    }else{
-        let temp = this.head;
-        let previousNode;
-        for(let i=0; i< index; i++){
-            previousNode = temp;
-            temp = temp.next;
-        }
-        let newNode = new Node(value, temp);
-        previousNode.next = newNode;
-        this.head = previousNode;
+  insertAt(value, index) {
+    if (this.size <= index && index >= 0) {
+      return new Error(
+        "The Index value is out of bound for the existing values"
+      );
+    } else {
+      let temp = this._head;
+      let previousNode;
+      for (let i = 0; i < index; i++) {
+        previousNode = temp;
+        temp = temp.next;
+      }
+      let newNode = new Node(value, temp);
+      previousNode.next = newNode;
     }
   }
 
-  removeAt(index){
-    if(this.size < index && index >= 0){
-        return new Error("The Index value is out of bound for the existing values");
-    }else{
-        let temp= this.head;
-        let previousNode;
-        for(let i=0; i< index; i++){
-            previousNode = temp;
-            temp = temp.next;
-        }
-        previousNode.next = temp.next;
-        this.head = previousNode;
+  removeAt(index) {
+    if (this.size < index && index >= 0) {
+      return new Error(
+        "The Index value is out of bound for the existing values"
+      );
+    } else {
+      let temp = this._head;
+      let previousNode;
+      for (let i = 0; i < index; i++) {
+        previousNode = temp;
+        temp = temp.next;
+      }
+      previousNode.next = temp.next;
     }
   }
 }
-
