@@ -61,7 +61,7 @@ export default class LinkedList {
     if (this._head == null) {
       this._head = new Node(value, null);
     } else {
-      let temp = new Node(value, this._head);
+      this._head = new Node(value, this._head);
     }
   }
 
